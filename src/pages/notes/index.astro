@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NoteCard from '../../components/NoteCard.astro';
+import notes from '../../data/notes.json';
+import { paths } from '../../data/paths';
+const topics=[...new Set(notes.map(n=>n.topic))];
+---
+<Layout title="Notes — Michael Hopwood" active="notes"><main id="main" class="page-width notes-page">
+<div class="library-heading"><div><p class="eyebrow">A GROWING COLLECTION OF IDEAS</p><h1>The <em>notebook.</em></h1><p>Machine learning, mathematics, and the details that make things click.</p></div><div class="library-count"><strong>{notes.length}</strong><span>entries & counting</span></div></div>
+<div class="library-layout"><aside class="library-sidebar"><p class="eyebrow">EXPLORE BY TOPIC</p><div class="topic-buttons"><button type="button" class="topic active" data-topic="" aria-pressed="true"><span>All topics</span><span>{notes.length}</span></button>{topics.map(topic=><button type="button" class="topic" data-topic={topic} aria-pressed="false"><span>{topic}</span><span>{notes.filter(n=>n.topic===topic).length}</span></button>)}</div><div class="sidebar-note"><span>↳</span><h3>A working collection</h3><p>These are personal study notes, not a textbook. Some are polished; others are still taking shape.</p><label class="draft-toggle"><input type="checkbox" id="drafts"/> Include early drafts</label></div><a class="text-link small" href="/resources/">Books & resources ↗</a></aside>
+<div class="library-main"><div class="search-box"><span aria-hidden="true">⌕</span><label class="sr-only" for="search">Search notes, concepts, and code</label><input id="search" type="search" placeholder="Search notes, concepts, or code…" autocomplete="off"/><kbd>/</kbd></div>
+<details class="learning-paths" open><summary><span>Not sure where to start? <strong>Follow a learning path.</strong></span><span>↓</span></summary><div class="path-grid">{paths.map(p=><a class="path-card" href={`/notes/?path=${p.id}`} data-path={p.id}><span class="path-number">{p.number} <span>↗</span></span><h3>{p.title}</h3><span>{p.slugs.length} notes · guided sequence</span></a>)}</div></details>
+<div class="results-toolbar"><div><span id="result-count" aria-live="polite">{notes.filter(n=>n.status!=='draft').length} notes</span><span id="active-filter"></span></div><label>Sort <select id="sort"><option value="featured">Featured first</option><option value="title">A–Z</option><option value="short">Shortest read</option></select></label></div>
+<div class="note-grid" id="results">{notes.filter(n=>n.status!=='draft').map(note=><NoteCard note={note}/>)}</div><div id="empty-state" class="empty-state" hidden><h2>No notes found.</h2><p>Try a broader term or include early drafts.</p><button type="button" class="button secondary" id="reset-filters">Clear filters</button></div><button type="button" id="load-more" class="button secondary load-more" hidden>Show more notes ↓</button><noscript><p>All published notes are listed above. Enable JavaScript for search and filters.</p></noscript>
+</div></div></main></Layout>
+<script>
+import {paths} from '../../data/paths';
+const $=(s:string)=>document.querySelector(s) as HTMLElement;
+const search=$('#search') as HTMLInputElement, drafts=$('#drafts') as HTMLInputElement, sort=$('#sort') as HTMLSelectElement;
+const params=new URLSearchParams(location.search);let topic=params.get('topic')||'',pathId=params.get('path')||'',limit=12;
+search.value=params.get('q')||'';drafts.checked=params.get('drafts')==='1';
+let data:any[]=[];
+const esc=(s:string)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
+function update(){
+ const q=search.value.trim().toLowerCase(),terms=q.split(/\s+/).filter(Boolean),path=paths.find(p=>p.id===pathId);
+ let found=data.filter(n=>(drafts.checked||n.status!=='draft')&&(!topic||n.topic===topic)&&(!path||path.slugs.includes(n.slug))&&terms.every(t=>(n.title+' '+n.summary+' '+n.topic+' '+n.text).toLowerCase().includes(t)));
+ found.sort((a,b)=>path?path.slugs.indexOf(a.slug)-path.slugs.indexOf(b.slug):sort.value==='short'?a.minutes-b.minutes:sort.value==='title'?a.title.localeCompare(b.title):Number(b.featured||false)-Number(a.featured||false)||a.title.localeCompare(b.title));
+ $('#results').innerHTML=found.slice(0,limit).map(n=>`<a class="note-card" href="/notes/${esc(n.slug)}/"><div class="card-eyebrow"><span>${esc(n.topic)}</span><span>${n.status==='draft'?'Draft':n.minutes+' min read'}</span></div><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p><div class="card-bottom"><span>↳ ${n.sourceType==='notebook'?'Notebook':'Note'}</span><span aria-hidden="true">↗</span></div></a>`).join('');
+ $('#result-count').textContent=`${found.length} ${found.length===1?'entry':'entries'}`;$('#empty-state').hidden=!!found.length;$('#load-more').hidden=found.length<=limit;
+ $('#active-filter').innerHTML=path||topic?`<button type="button" class="filter-chip" id="clear-active">${esc(path?.title||topic)} ×</button>`:'';
+ $('#clear-active')?.addEventListener('click',()=>{topic='';pathId='';limit=12;update()});
+ document.querySelectorAll<HTMLButtonElement>('[data-topic]').forEach(b=>{b.classList.toggle('active',b.dataset.topic===topic);b.setAttribute('aria-pressed',String(b.dataset.topic===topic))});
+ document.querySelectorAll<HTMLElement>('[data-path]').forEach(b=>b.classList.toggle('selected',b.dataset.path===pathId));
+ const url=new URL(location.href);for(const [k,v]of Object.entries({q:search.value,topic,path:pathId,drafts:drafts.checked?'1':''})){v?url.searchParams.set(k,v):url.searchParams.delete(k)}history.replaceState(null,'',url);
+}
+fetch('/search-index.json').then(r=>{if(!r.ok)throw Error('Search unavailable');return r.json()}).then(n=>{data=n;update()}).catch(()=>{$('#result-count').textContent='Search is unavailable. Browse the notes below.';search.disabled=true});
+search.addEventListener('input',()=>{limit=12;update()});drafts.addEventListener('change',()=>{limit=12;update()});sort.addEventListener('change',update);
+for(const b of document.querySelectorAll<HTMLButtonElement>('[data-topic]'))b.addEventListener('click',()=>{topic=b.dataset.topic||'';pathId='';limit=12;update()});
+for(const b of document.querySelectorAll<HTMLAnchorElement>('[data-path]'))b.addEventListener('click',e=>{e.preventDefault();pathId=b.dataset.path||'';topic='';search.value='';limit=12;update()});
+$('#load-more').addEventListener('click',()=>{limit+=12;update()});$('#reset-filters').addEventListener('click',()=>{topic='';pathId='';search.value='';drafts.checked=false;update()});
+document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes((e.target as HTMLElement).tagName)){e.preventDefault();search.focus()}});
+</script>

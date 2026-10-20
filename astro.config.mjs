@@ -1,0 +1,2 @@
+import { defineConfig } from 'astro/config';
+export default defineConfig({site:'https://mhopwood.com',output:'static',server:{host:'127.0.0.1'},trailingSlash:'always',devToolbar:{enabled:false},vite:{plugins:[{name:'static-no-prebundle',configResolved(config){config.optimizeDeps.noDiscovery=true;config.optimizeDeps.include=[];for(const env of Object.values(config.environments||{})){env.optimizeDeps.noDiscovery=true;env.optimizeDeps.include=[];}}}]}});

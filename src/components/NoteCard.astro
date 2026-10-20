@@ -1,0 +1,4 @@
+---
+const {note}=Astro.props;
+---
+<a class="note-card" href={`/notes/${note.slug}/`}><div class="card-eyebrow"><span>{note.topic}</span><span>{note.status==='draft'?'Draft':`${note.minutes} min read`}</span></div><h3>{note.title}</h3><p>{note.summary}</p><div class="card-bottom"><span>{note.sourceType==='notebook'?'↳ Notebook':'↳ Note'}</span><span aria-hidden="true">↗</span></div></a>

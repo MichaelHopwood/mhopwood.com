@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "installCommand": "npx --yes pnpm@11.25.0 install --frozen-lockfile",
+  "buildCommand": "npm run build && npm run check",
+  "outputDirectory": "dist",
+  "trailingSlash": true
+}

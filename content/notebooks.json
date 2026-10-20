@@ -1,0 +1,310 @@
+{
+  "AB Testing.ipynb": {
+    "title": "A/B testing",
+    "topic": "Statistics",
+    "summary": "Designing experiments, comparing groups, and reasoning about uncertainty.",
+    "status": "note",
+    "featured": false
+  },
+  "Attention.ipynb": {
+    "title": "Attention mechanisms",
+    "topic": "Deep learning",
+    "summary": "Queries, keys, and values: an intuitive look at attention.",
+    "status": "note",
+    "featured": false
+  },
+  "Basic Neural Networks.ipynb": {
+    "title": "Neural network fundamentals",
+    "topic": "Deep learning",
+    "summary": "Neurons, activation functions, and the mechanics of a forward pass.",
+    "status": "note",
+    "featured": false
+  },
+  "Bootstrapping.ipynb": {
+    "title": "Bootstrapping",
+    "topic": "Statistics",
+    "summary": "Estimate uncertainty by resampling the data you already have.",
+    "status": "note",
+    "featured": true
+  },
+  "Coding.ipynb": {
+    "title": "Coding patterns",
+    "topic": "Foundations",
+    "summary": "Reusable algorithmic patterns, from prefix sums to graph traversal.",
+    "status": "note",
+    "featured": false
+  },
+  "Common Interview Questions.ipynb": {
+    "title": "ML interview questions",
+    "topic": "Foundations",
+    "summary": "A working collection of questions on mathematics and machine learning.",
+    "status": "note",
+    "featured": false
+  },
+  "ContextualBandits.ipynb": {
+    "title": "Contextual bandits",
+    "topic": "Graph & sequential learning",
+    "summary": "Learning a policy through feedback, exploration, and exploitation.",
+    "status": "note",
+    "featured": true
+  },
+  "Cross Entropy.ipynb": {
+    "title": "Cross entropy",
+    "topic": "Machine learning",
+    "summary": "Connecting likelihood, classification, and the cross-entropy loss.",
+    "status": "note",
+    "featured": false
+  },
+  "DataMiningFundamentals.ipynb": {
+    "title": "Data mining fundamentals",
+    "topic": "Foundations",
+    "summary": "Frequentist and Bayesian perspectives on basic probability.",
+    "status": "note",
+    "featured": false
+  },
+  "DecisionTree.ipynb": {
+    "title": "Decision trees",
+    "topic": "Machine learning",
+    "summary": "An outline for future notes on tree-based learning.",
+    "status": "draft",
+    "featured": false
+  },
+  "Discriminant Analysis.ipynb": {
+    "title": "Discriminant analysis",
+    "topic": "Machine learning",
+    "summary": "Classification through decision boundaries and distributional assumptions.",
+    "status": "note",
+    "featured": false
+  },
+  "Explainable AI.ipynb": {
+    "title": "Explainable AI",
+    "topic": "Machine learning",
+    "summary": "A short introduction to post-hoc, intrinsic, and distilled explanations.",
+    "status": "note",
+    "featured": false
+  },
+  "Fundamentals.ipynb": {
+    "title": "The bitter lesson",
+    "topic": "Foundations",
+    "summary": "Collected references on general methods and computation.",
+    "status": "draft",
+    "featured": false
+  },
+  "Generalized_Additive_Model.ipynb": {
+    "title": "Generalized additive models",
+    "topic": "Machine learning",
+    "summary": "Flexible regression with additive smooth functions and Python examples.",
+    "status": "note",
+    "featured": false
+  },
+  "Generative adversarial networks.ipynb": {
+    "title": "Generative adversarial networks",
+    "topic": "Deep learning",
+    "summary": "The generator-discriminator game, with training code and saved results.",
+    "status": "note",
+    "featured": false
+  },
+  "Gradient Descent.ipynb": {
+    "title": "Gradient descent",
+    "topic": "Numerical methods",
+    "summary": "Optimization, learning rates, and the geometry of descent.",
+    "status": "note",
+    "featured": false
+  },
+  "GradientBoosting.ipynb": {
+    "title": "Gradient boosting",
+    "topic": "Machine learning",
+    "summary": "A code-focused exploration of tree ensembles and boosting.",
+    "status": "note",
+    "featured": false
+  },
+  "Hidden Markov Models.ipynb": {
+    "title": "Hidden Markov models",
+    "topic": "Graph & sequential learning",
+    "summary": "Inferring hidden states from sequences of observations.",
+    "status": "note",
+    "featured": false
+  },
+  "Inversion methods.ipynb": {
+    "title": "Inversion methods",
+    "topic": "Statistics",
+    "summary": "Probability integral transforms and inverse-transform sampling.",
+    "status": "note",
+    "featured": false
+  },
+  "Jackknife Sampling.ipynb": {
+    "title": "Jackknife sampling",
+    "topic": "Statistics",
+    "summary": "Estimating bias and uncertainty with leave-one-out resampling.",
+    "status": "note",
+    "featured": false
+  },
+  "KernelPCA.ipynb": {
+    "title": "Kernel PCA",
+    "topic": "Machine learning",
+    "summary": "Linear separation in nonlinear feature spaces.",
+    "status": "note",
+    "featured": false
+  },
+  "Least_Squares_SVM.ipynb": {
+    "title": "Least-squares SVM",
+    "topic": "Machine learning",
+    "summary": "Margins, duality, kernels, and a least-squares formulation.",
+    "status": "note",
+    "featured": false
+  },
+  "Logistic Regression.ipynb": {
+    "title": "Logistic regression",
+    "topic": "Machine learning",
+    "summary": "Log-odds, maximum likelihood, and classification boundaries.",
+    "status": "note",
+    "featured": false
+  },
+  "Markov Chain Monte Carlo.ipynb": {
+    "title": "Markov chain Monte Carlo",
+    "topic": "Statistics",
+    "summary": "Sampling dependent random variables to approximate difficult distributions.",
+    "status": "note",
+    "featured": false
+  },
+  "Math & Stat Fundamentals.ipynb": {
+    "title": "Mathematical foundations",
+    "topic": "Foundations",
+    "summary": "A compact reference for linear algebra and statistical notation.",
+    "status": "note",
+    "featured": false
+  },
+  "Metrics.ipynb": {
+    "title": "Model diagnostics & metrics",
+    "topic": "Machine learning",
+    "summary": "Regression assumptions, error terms, and diagnostic checks.",
+    "status": "note",
+    "featured": false
+  },
+  "Model summaries.ipynb": {
+    "title": "A field guide to ML models",
+    "topic": "Machine learning",
+    "summary": "Compare model families, use cases, and extensions in one place.",
+    "status": "note",
+    "featured": false
+  },
+  "Monte Carlo Integration.ipynb": {
+    "title": "Monte Carlo integration",
+    "topic": "Numerical methods",
+    "summary": "Approximate integrals with random sampling and variance reduction.",
+    "status": "note",
+    "featured": true
+  },
+  "NLP.ipynb": {
+    "title": "Natural language processing",
+    "topic": "Deep learning",
+    "summary": "An outline for a growing collection of language-model notes.",
+    "status": "draft",
+    "featured": false
+  },
+  "NN Learning.ipynb": {
+    "title": "Learning in neural networks",
+    "topic": "Deep learning",
+    "summary": "Jacobians, vectorized gradients, and backpropagation.",
+    "status": "note",
+    "featured": true
+  },
+  "NNGaussianProcess.ipynb": {
+    "title": "Neural network Gaussian processes",
+    "topic": "Deep learning",
+    "summary": "How Gaussian structure propagates through network layers.",
+    "status": "note",
+    "featured": false
+  },
+  "Network Science.ipynb": {
+    "title": "Network science",
+    "topic": "Graph & sequential learning",
+    "summary": "Connectivity, emergence, and the structure of complex systems.",
+    "status": "note",
+    "featured": false
+  },
+  "Regularization Methods.ipynb": {
+    "title": "Regularization methods",
+    "topic": "Machine learning",
+    "summary": "Ridge, lasso, and constrained optimization in detail.",
+    "status": "note",
+    "featured": false
+  },
+  "Regularization.ipynb": {
+    "title": "Regularization: working notes",
+    "topic": "Machine learning",
+    "summary": "Working derivations on shrinkage and orthogonal predictors.",
+    "status": "note",
+    "featured": false
+  },
+  "Revisiting Basic Neural Networks.ipynb": {
+    "title": "ReLU networks, revisited",
+    "topic": "Deep learning",
+    "summary": "A more formal view of feedforward networks and affine compositions.",
+    "status": "note",
+    "featured": false
+  },
+  "Root finding.ipynb": {
+    "title": "Root-finding methods",
+    "topic": "Numerical methods",
+    "summary": "Bisection, Newton\u2019s method, and numerical solutions to equations.",
+    "status": "note",
+    "featured": false
+  },
+  "SVM Adaptations.ipynb": {
+    "title": "SVM adaptations",
+    "topic": "Machine learning",
+    "summary": "Extensions of support vector machines and their constraints.",
+    "status": "note",
+    "featured": false
+  },
+  "Sampling theory.ipynb": {
+    "title": "Sampling theory: working notes",
+    "topic": "Statistics",
+    "summary": "A source transcript awaiting synthesis into a structured note.",
+    "status": "draft",
+    "featured": false
+  },
+  "Scaling Graph Neural Networks.ipynb": {
+    "title": "Graph neural networks at scale",
+    "topic": "Graph & sequential learning",
+    "summary": "Neighborhood sampling and learning from large graph structures.",
+    "status": "note",
+    "featured": true
+  },
+  "Supervised Learning - An Introduction.ipynb": {
+    "title": "Introduction to supervised learning",
+    "topic": "Machine learning",
+    "summary": "Least squares, prediction, and the foundations of supervised models.",
+    "status": "note",
+    "featured": true
+  },
+  "Support Vector Machines.ipynb": {
+    "title": "Support vector machines",
+    "topic": "Machine learning",
+    "summary": "Margins, hyperplanes, and kernels for classification.",
+    "status": "note",
+    "featured": false
+  },
+  "Theoretical Statistics Questions.ipynb": {
+    "title": "Theoretical statistics questions",
+    "topic": "Statistics",
+    "summary": "A reference for sufficiency, completeness, unbiasedness, and inference.",
+    "status": "note",
+    "featured": false
+  },
+  "Theoretical Statistics.ipynb": {
+    "title": "Theoretical statistics",
+    "topic": "Statistics",
+    "summary": "Transformations, expectations, and inference, following Casella and Berger.",
+    "status": "note",
+    "featured": false
+  },
+  "Transforms.ipynb": {
+    "title": "Transforms",
+    "topic": "Numerical methods",
+    "summary": "An early outline for transforms and their applications.",
+    "status": "draft",
+    "featured": false
+  }
+}

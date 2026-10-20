@@ -1,0 +1,31 @@
+{
+  "name": "mhopwood-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build-notes.mjs && astro dev --host 127.0.0.1",
+    "build": "node scripts/build-notes.mjs && astro build",
+    "check": "node scripts/check-site.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.15.0",
+    "unified": "^11.0.5",
+    "remark-parse": "^11.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-rehype": "^11.1.2",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-highlight": "^7.0.2",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "gray-matter": "^4.0.3",
+    "katex": "^0.16.25",
+    "highlight.js": "^11.11.1"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@11.25.0"
+}

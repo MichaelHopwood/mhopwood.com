@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+src/data/notes.json
+public/notebooks/
+public/note-assets/
+public/legacy-assets/
+
+public/search-index.json
+public/en/
+.vercel/

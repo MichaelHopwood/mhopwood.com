@@ -1,0 +1,12 @@
+---
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+import 'highlight.js/styles/github-dark.css';
+const {title='Michael Hopwood — Applied science & field notes',description='Applied machine learning, research, and an evolving collection of technical notes.',active='home'}=Astro.props;
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#f6f5ef"/><title>{title}</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="canonical" href={new URL(Astro.url.pathname,'https://mhopwood.com')}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/></head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="/" aria-label="Michael Hopwood home"><span class="monogram">mh<span>·</span></span><span>Michael Hopwood</span></a><nav aria-label="Main navigation"><a aria-current={active==='home'?'page':undefined} href="/">Home</a><a aria-current={active==='notes'?'page':undefined} href="/notes/">Notes <span class="nav-dot"></span></a><a aria-current={active==='projects'?'page':undefined} href="/projects/">Projects</a><a aria-current={active==='about'?'page':undefined} href="/about/">About</a></nav><a class="header-github" href="https://github.com/MichaelHopwood">GitHub ↗</a></header>
+<slot/>
+<footer class="site-footer"><div><span class="footer-name">Michael Hopwood</span><span>Applied science. Ideas in progress.</span></div><div><a href="/resources/">Resources</a><a href="https://scholar.google.com/citations?user=IpAk8_gAAAAJ">Scholar ↗</a><a href="https://www.linkedin.com/in/michael-hopwood-43ba97123/">LinkedIn ↗</a><a href="mailto:mwhopwood@gmail.com">Email ↗</a></div></footer>
+</body></html>

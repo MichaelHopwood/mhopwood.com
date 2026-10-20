@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NoteCard from '../../components/NoteCard.astro';
+import notes from '../../data/notes.json';
+export function getStaticPaths(){return notes.map(note=>({params:{slug:note.slug},props:{note}}))}
+const {note}=Astro.props;
+const related=notes.filter(n=>n.topic===note.topic&&n.slug!==note.slug&&n.status!=='draft').slice(0,3);
+---
+<Layout title={`${note.title} — Michael Hopwood`} description={note.summary} active="notes"><div class="reading-progress" id="reading-progress"></div><main id="main" class="page-width article-page"><a class="back-link" href="/notes/">← Back to the notebook</a><div class="article-layout"><article><header class="article-heading"><p class="eyebrow">{note.topic}</p><h1>{note.title}</h1><p class="article-summary">{note.summary}</p><div class="article-meta"><span>Michael Hopwood</span><span>·</span><span>{note.minutes} min read</span><span class="status">{note.status==='draft'?'Early draft':'Study notes'}</span></div></header>
+{note.status==='draft'&&<div class="notice">This entry is an early draft or outline. It is kept here as part of the working collection.</div>}
+<details class="mobile-toc"><summary>On this page</summary><nav>{note.toc.map(h=><a href={`#${h.id}`}>{h.title}</a>)}</nav></details>
+<div class="prose" set:html={note.html}></div>
+<div class="article-end"><span>END OF NOTE</span>{note.sourceType==='notebook'&&<a href={`/notebooks/${encodeURIComponent(note.source)}`} download>Download notebook ↓</a>}<a href="/notes/">Keep exploring →</a></div>
+{related.length>0&&<section class="related"><p class="eyebrow">KEEP CONNECTING THE IDEAS</p><h2>Related notes</h2><div class="note-grid">{related.map(n=><NoteCard note={n}/>)}</div></section>}
+</article><aside class="article-sidebar"><div><p class="eyebrow">ON THIS PAGE</p><nav aria-label="Table of contents">{note.toc.length?note.toc.map(h=><a class:list={['toc-link',{'nested':h.level===3}]} href={`#${h.id}`}>{h.title}</a>):<p class="muted small">A short note.</p>}</nav><div class="source-links">{note.sourceType==='notebook'&&<a href={`/notebooks/${encodeURIComponent(note.source)}`} download>↓ Download notebook</a>}<a href={note.sourceType==='notebook'?`https://github.com/MichaelHopwood/mhopwood.com/blob/master/content/notebooks/${encodeURIComponent(note.source)}`:`https://github.com/MichaelHopwood/mhopwood.com/blob/master/${note.source}`}>View source on GitHub ↗</a></div><p class="source-caption">Original study material, with references retained. Code outputs are saved results; code is not executed in your browser.</p></div></aside></div></main></Layout>
+<script>
+document.querySelectorAll<HTMLButtonElement>('.copy-code').forEach(button=>button.addEventListener('click',async()=>{const code=button.closest('.code-cell')?.querySelector('code')?.textContent||'';try{await navigator.clipboard.writeText(code);button.textContent='Copied';setTimeout(()=>button.textContent='Copy',1800)}catch{button.textContent='Select code to copy'}}));
+const headings=document.querySelectorAll('.prose h2,.prose h3');const links=document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('current',a.hash==='#'+entry.target.id))}},{rootMargin:'-10% 0px -70% 0px'});headings.forEach(h=>observer.observe(h));
+function progress(){const article=document.querySelector('article')!;const total=article.offsetHeight-innerHeight;const percentage=Math.max(0,Math.min(100,((scrollY-article.offsetTop)/Math.max(1,total))*100));(document.querySelector('#reading-progress') as HTMLElement).style.width=percentage+'%'}window.addEventListener('scroll',progress,{passive:true});progress();
+</script>
